@@ -1,2 +1,0 @@
-Invoking command in '/home/eng/Music/imitation_learning_ros/build/imitation_learning': /usr/local/bin/cmake /home/eng/Music/imitation_learning_ros/src/imitation_learning -DCMAKE_INSTALL_PREFIX=/home/eng/Music/imitation_learning_ros/install/imitation_learning
-Invoked command in '/home/eng/Music/imitation_learning_ros/build/imitation_learning' returned '1': /usr/local/bin/cmake /home/eng/Music/imitation_learning_ros/src/imitation_learning -DCMAKE_INSTALL_PREFIX=/home/eng/Music/imitation_learning_ros/install/imitation_learning

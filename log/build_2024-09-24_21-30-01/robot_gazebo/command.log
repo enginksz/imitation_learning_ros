@@ -1,2 +1,0 @@
-Invoking command in '/home/eng/Music/imitation_learning_ros/build/robot_gazebo': /usr/local/bin/cmake /home/eng/Music/imitation_learning_ros/src/robot_simulation/robot_gazebo -DCMAKE_INSTALL_PREFIX=/home/eng/Music/imitation_learning_ros/install/robot_gazebo
-Invoked command in '/home/eng/Music/imitation_learning_ros/build/robot_gazebo' returned '1': /usr/local/bin/cmake /home/eng/Music/imitation_learning_ros/src/robot_simulation/robot_gazebo -DCMAKE_INSTALL_PREFIX=/home/eng/Music/imitation_learning_ros/install/robot_gazebo
