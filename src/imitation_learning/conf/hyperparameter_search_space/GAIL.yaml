@@ -1,0 +1,54 @@
+# @package hydra.sweeper.ax_config
+
+defaults:
+  - SAC
+
+params:
+  imitation.discriminator.hidden_size:
+    type: choice
+    values: [32, 64, 128]
+    value_type: int
+  imitation.discriminator.depth:
+    type: choice
+    values: [1, 2]
+    value_type: int
+  imitation.discriminator.activation:
+    type: choice
+    values: [relu, tanh]
+    value_type: str
+  imitation.discriminator.input_dropout:
+    type: range
+    bounds: [0, 0.5]
+    value_type: float
+  imitation.discriminator.dropout:
+    type: range
+    bounds: [0.05, 0.75]
+    value_type: float
+  imitation.discriminator.reward_function:
+    type: choice
+    values: [GAIL, AIRL, FAIRL]
+    value_type: str
+  imitation.learning_rate:
+    type: range
+    bounds: [0.00003, 0.0003]
+    value_type: float
+  imitation.weight_decay:
+    type: range
+    bounds: [0.0, 10.0]
+    value_type: float
+  imitation.grad_penalty:
+    type: range
+    bounds: [0.0, 1.0]
+    value_type: float
+  imitation.spectral_norm:
+    type: choice
+    values: [true, false]
+    value_type: bool
+  imitation.entropy_bonus:
+    type: range
+    bounds: [0.0, 0.3]
+    value_type: float
+  imitation.loss_function:
+    type: choice
+    values: [BCE, Mixup, PUGAIL]
+    value_type: str

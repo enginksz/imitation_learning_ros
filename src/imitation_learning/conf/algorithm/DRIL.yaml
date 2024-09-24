@@ -1,0 +1,16 @@
+# @package _global_
+
+algorithm: DRIL
+imitation:
+  bc_aux_loss: true
+  discriminator:
+    hidden_size: 64
+    depth: 1
+    activation: tanh
+    input_dropout: 0.1
+    dropout: 0.1
+  pretraining:
+    iterations: 100000
+  learning_rate: 0.00003
+  weight_decay: 0
+  quantile_cutoff: 0.98

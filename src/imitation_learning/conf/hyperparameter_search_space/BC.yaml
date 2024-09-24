@@ -1,0 +1,15 @@
+# @package hydra.sweeper.ax_config
+
+params:
+  bc_pretraining.iterations:
+    type: range
+    bounds: [1000, 100000]
+    value_type: int
+  bc_pretraining.learning_rate:
+    type: range
+    bounds: [0.00003, 0.0003]
+    value_type: float
+  training.batch_size:
+    type: choice
+    values: [128, 256, 512, 1024]
+    value_type: int

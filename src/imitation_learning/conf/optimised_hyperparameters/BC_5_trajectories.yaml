@@ -1,0 +1,9 @@
+# @package _global_
+
+bc_pretraining:
+  iterations: 29212
+  learning_rate: 0.000147441143532693
+training:
+  batch_size: 128
+imitation:
+  trajectories: 5

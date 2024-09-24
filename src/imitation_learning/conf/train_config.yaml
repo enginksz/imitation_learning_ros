@@ -1,0 +1,78 @@
+defaults:
+  - _self_
+  - algorithm: GAIL
+  - optional optimised_hyperparameters: null
+
+# General options
+seed: 0
+steps: 50000
+env: ant
+# Training/evaluation/logging hyperparameters
+bc_pretraining:
+  iterations: 0
+  learning_rate: 0.00025
+  weight_decay: 0
+training:
+  start: 1000
+  interval: 1
+  batch_size: 256
+  learning_rate: 0.0003
+  weight_decay: 0
+evaluation:
+  interval: 5000
+  episodes: 30
+logging:
+  interval: 1000  # 0 to disable; logging too frequently can crash plotting/result in a large metrics file
+# Agent/reinforcement learning hyperparameters
+reinforcement:
+  actor:
+    hidden_size: 256
+    depth: 2
+    activation: relu
+  critic:
+    hidden_size: 256
+    depth: 2
+    activation: relu
+  discount: 0.97
+  target_temperature: -0.5
+  polyak_factor: 0.99
+memory:
+  size: 1000000
+# Imitation learning hyperparameters
+imitation:
+  trajectories: 0  # 0 to keep all trajectories; otherwise select number of trajectories
+  subsample: 1  # Note that 20 was default in original GAIL implementation
+  state_only: false
+  absorbing: true
+  discriminator:
+    hidden_size: 64 
+    depth: 1
+    activation: relu
+    input_dropout: 0.5
+    dropout: 0.75
+    reward_shaping: false
+    subtract_log_policy: false
+    reward_function: AIRL
+  mix_expert_data: none
+  bc_aux_loss: false
+  learning_rate: 0.00003
+  weight_decay: 10
+  grad_penalty: 1
+  spectral_norm: true
+  entropy_bonus: 0
+  loss_function: BCE
+  mixup_alpha: 1
+  pos_class_prior: 0.7
+  nonnegative_margin: .inf
+# Miscellaneous options
+check_time_usage: false
+save_trajectories: false
+render: false
+
+hydra:
+  job:
+    chdir: true  # Change working directory to output directory (default behaviour for Hydra < 1.2)
+  run:
+    dir: ./outputs/${algorithm}_${env}/${now:%m-%d_%H-%M-%S}  # Timestamp experiments up to second precision
+  sweep:
+    dir: ./outputs/${algorithm}_${env}_sweeper/${now:%m-%d_%H-%M-%S}

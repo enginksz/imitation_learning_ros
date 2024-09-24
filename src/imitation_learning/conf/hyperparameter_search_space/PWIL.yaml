@@ -1,0 +1,14 @@
+# @package hydra.sweeper.ax_config
+
+defaults:
+  - SAC
+
+params:
+  imitation.reward_scale:
+    type: choice
+    values: [1.0, 5.0, 10.0]
+    value_type: float
+  imitation.reward_bandwidth_scale:
+    type: choice
+    values: [1.0, 5.0, 10.0]
+    value_type: float

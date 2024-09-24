@@ -1,0 +1,19 @@
+defaults:
+  - train_config  # Use default config as base
+  - _self_
+  - optional hyperparameter_search_space: ${algorithm} 
+  - override hydra/sweeper: ax
+
+hydra:
+  run:
+    dir: ./outputs/${algorithm}_all/${now:%m-%d_%H-%M-%S}  # Timestamp experiments up to second precision
+  sweep:
+    dir: ./outputs/${algorithm}_all_sweeper/${now:%m-%d_%H-%M-%S}
+  sweeper:
+    ax_config:
+      max_trials: 30
+      experiment:
+        minimize: false
+      early_stop:
+        max_epochs_without_improvement: 5
+      is_noisy: true

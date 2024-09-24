@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="imitation_learning_block">
+    <link name="link">
+    	<inertial>
+		    <origin xyz="0 0 0"/>
+		    <mass value="100.0"/> 
+		    <inertia ixx="0.16" ixy="0" ixz="0" iyy="0.16" iyz="0" izz="0.32" />
+	    </inertial>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <scale>0.93 0.93 1</scale>
+            <uri>model://imitation_learning_block/meshes/imitation_learning_block.stl</uri>
+          </mesh>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.2</mu>
+                <mu2>1.2</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <scale>0.93 0.93 1</scale>
+            <uri>model://imitation_learning_block/meshes/imitation_learning_block.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
