@@ -46,6 +46,7 @@ To build your ROS package, follow these steps:
    cd imitation_learning_ros
    colcon build
    source install/setup.bash
+    ```
    
 ## Running Imitation Learning
 Launch the Simulation: Use the following command to launch the Gazebo simulation:
@@ -54,43 +55,44 @@ Launch the Simulation: Use the following command to launch the Gazebo simulation
    colcon build
    source install/setup.bash
    ros2 launch robot_gazebo main.launch.xml
+   ```
 
-Run the Data Collection Script: Use the following command to execute the collect_data.py script:
+
+### Run the Data Collection Script: Use the following command to execute the collect_data.py script:
+```bash
 ros2 run imitation_learning collect_data.py
-ros2 run imitation_learning collect_data.py
-Training the Imitation Learning Model
+```
+### Training the Imitation Learning Model
 To train the imitation learning model, you will need to run the train_imitation_learning.py script. Follow these steps:
 
 Navigate to Your ROS 2 Workspace: Ensure you are in the root directory of your ROS 2 workspace. If you are in the imitation_learning_ros folder, you may need to go up a level:
 
-bash
-Copy code
-cd ..
-Source Your Workspace: Before running the script, source your workspace to ensure that all packages are correctly configured:
-
-bash
-Copy code
+```bash
 source install/setup.bash
+```
 Run the Training Script: Use the following command to execute the train_imitation_learning.py script:
 
-bash
-Copy code
+```bash
 ros2 run imitation_learning train_imitation_learning.py
-Explanation
+```
+### Explanation
 The train_imitation_learning.py script is responsible for training the agent using the collected data. It typically loads the dataset of state-action pairs gathered during the data collection phase and utilizes algorithms like GAIL or behavioral cloning to optimize the agent's policy.
 The training process may involve tuning hyperparameters and evaluating the model's performance based on its ability to mimic expert behaviors.
+
 Troubleshooting
 If you encounter issues while running the training script, check the terminal output for error messages.
 Ensure that the collected data is available and correctly formatted.
+
 Example Command Sequence
 Here’s a quick sequence of commands you might use:
 
-bash
-Copy code
+```bash
 cd ..  # Navigate to the ROS 2 workspace root
 source install/setup.bash
 ros2 run imitation_learning train_imitation_learning.py
-Conclusion
+```
+### Conclusion
+
 This project demonstrates how imitation learning can be effectively utilized for obstacle avoidance in robotics. Future work may involve real-world testing and further model refinement.
 
 
