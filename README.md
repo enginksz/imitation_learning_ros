@@ -1,3 +1,13 @@
+---
+layout: page
+title: Obstacle Avoidance with Imitation Learning
+description: This project explores the implementation of obstacle avoidance in autonomous systems using imitation learning. The aim is to train agents to navigate environments while effectively avoiding obstacles.
+img: assets/img/gail.png
+importance: 2
+category: work
+giscus_comments: true
+---
+
 # Obstacle Avoidance with Imitation Learning
 
 ## Introduction
@@ -92,9 +102,3 @@ ros2 run imitation_learning train_imitation_learning.py
 ### Conclusion
 
 This project demonstrates how imitation learning can be effectively utilized for obstacle avoidance in robotics. Future work may involve real-world testing and further model refinement.
-
-
-
-
-
-
