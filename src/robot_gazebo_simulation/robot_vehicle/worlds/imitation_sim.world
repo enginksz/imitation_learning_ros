@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+  <world name="default">
+
+    <gravity>0 0 -9.80664</gravity>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <name>box1</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>-0.6 2.4 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box2</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>0.0 1.2 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box3</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>1.2 1.8 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box4</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>1.8 1.2 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box5</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>1.2 0.6 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box6</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>1.8 -0.6 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box7</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>-0.6 -0.6 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box8</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>0.6 -0.6 0.1 0 0 0</pose>
+    </include>
+
+    <include>
+      <name>box9</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>-1.2 0.6 0.1 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>box10</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>-2.4 0.0 0.1 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>box11</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>-1.8 -1.8 0.1 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>box12</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>-1.2 -1.8 0.1 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>box13</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>0.0 -1.8 0.1 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>box14</name>
+      <uri>model://imitation_learning_block</uri>
+      <static>false</static>
+      <pose>0.6 -1.2 0.1 0 0 0</pose>
+    </include> 
+
+    <include>
+      <name>imitation_learning_stage</name>
+      <uri>model://imitation_learning_stage</uri>
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+      </ros>
+      <update_rate>50</update_rate>
+    </plugin>
+    
+    <camera name='user_camera'>
+      <pose>-0.068961 3.37586 8.58288 0 1.2058 -1.5718</pose>
+      <view_controller>orbit</view_controller>
+      <projection_type>perspective</projection_type>
+    </camera>
+  </world>
+</sdf>
