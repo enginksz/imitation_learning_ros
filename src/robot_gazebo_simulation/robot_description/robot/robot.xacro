@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<robot name="omni_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/robot/parts/base/base.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/parts/omni_wheel/omni_wheel.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/parts/roller/roller.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/parts/lrf/lrf.xacro"/>
+  <xacro:include filename="$(find robot_description)/robot/robot_control_gazebo.xacro"/>
+  <xacro:property name="PI" value="3.14159274"/>
+
+  <xacro:arg name="robot_name" default="robot_1"/>
+
+  <!-- =============== Link & Joint =============== -->
+  <!-- Base -->
+  <link name="$(arg robot_name)_base_footprint"/>
+  <xacro:base_v0 robot_name="$(arg robot_name)" parent="$(arg robot_name)_base_footprint">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:base_v0>
+
+  <!-- Wheel -->
+  <!-- 1st wheel -->
+  <xacro:wheel_v0 prefix="$(arg robot_name)_first" parent="$(arg robot_name)_base_link">
+	  <origin xyz="0.086338 -0.086338 -0.022" rpy="0 0 ${-3*PI/4}"/>
+	  <axis xyz="0 1 0"/>
+  </xacro:wheel_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r1_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="0 -0.006 0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r2_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="-0.0228853 -0.006 0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r3_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="-0.0141439 -0.006 -0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r4_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="0.0141439 -0.006 -0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r5_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="0.0228853 -0.006 0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r6_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="0 0.006 -0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/>
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r7_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="0.0228853 0.006 -0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r8_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="0.0141439 0.006 0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r9_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="-0.0141439 0.006 0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r10_F" parent="$(arg robot_name)_first_wheel_link">
+	<origin xyz="-0.0228853 0.006 -0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+  <!-- 2nd wheel -->
+  <xacro:wheel_v0 prefix="$(arg robot_name)_second" parent="$(arg robot_name)_base_link">
+	<origin xyz="0.086338 0.086338 -0.022" rpy="0 0 ${-PI/4}"/>
+	<axis xyz="0 1 0"/>
+  </xacro:wheel_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r1_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="0 -0.006 0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r2_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="-0.0228853 -0.006 0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r3_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="-0.0141439 -0.006 -0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r4_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="0.0141439 -0.006 -0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r5_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="0.0228853 -0.006 0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r6_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="0 0.006 -0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/>
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r7_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="0.0228853 0.006 -0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r8_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="0.0141439 0.006 0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r9_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="-0.0141439 0.006 0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r10_S" parent="$(arg robot_name)_second_wheel_link">
+	<origin xyz="-0.0228853 0.006 -0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+<!-- 3rd wheel -->
+  <xacro:wheel_v0 prefix="$(arg robot_name)_third" parent="$(arg robot_name)_base_link">
+	<origin xyz="-0.086338 0.086338 -0.022" rpy="0 0 ${PI/4}"/>
+	<axis xyz="0 1 0"/>
+  </xacro:wheel_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r1_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="0 -0.006 0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r2_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="-0.0228853 -0.006 0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r3_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="-0.0141439 -0.006 -0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r4_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="0.0141439 -0.006 -0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r5_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="0.0228853 -0.006 0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r6_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="0 0.006 -0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/>
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r7_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="0.0228853 0.006 -0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r8_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="0.0141439 0.006 0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r9_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="-0.0141439 0.006 0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r10_T" parent="$(arg robot_name)_third_wheel_link">
+	<origin xyz="-0.0228853 0.006 -0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+<!-- 4th wheel -->
+  <xacro:wheel_v0 prefix="$(arg robot_name)_fourth" parent="$(arg robot_name)_base_link">
+	<origin xyz="-0.086338 -0.086338 -0.022" rpy="0 0 ${3*PI/4}"/>
+	<axis xyz="0 1 0"/>
+  </xacro:wheel_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r1_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="0 -0.006 0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r2_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="-0.0228853 -0.006 0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r3_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="-0.0141439 -0.006 -0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r4_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="0.0141439 -0.006 -0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r5_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="0.0228853 -0.006 0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+  <xacro:roller_v0 prefix="$(arg robot_name)_r6_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="0 0.006 -0.024063" rpy="0 0 1.570796"/>
+	<axis xyz="0 1 0"/>
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r7_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="0.0228853 0.006 -0.0074359" rpy="-1.256637 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r8_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="0.0141439 0.006 0.0194674" rpy="-2.513274 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r9_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="-0.0141439 0.006 0.0194674" rpy="-3.769911 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+  <xacro:roller_v0 prefix="$(arg robot_name)_r10_R" parent="$(arg robot_name)_fourth_wheel_link">
+	<origin xyz="-0.0228853 0.006 -0.0074359" rpy="-5.026548 0 1.570796"/>
+	<axis xyz="0 1 0"/> 
+  </xacro:roller_v0>
+
+  <!-- lrf sensor -->
+  <xacro:lrf_v0 prefix = "$(arg robot_name)_front" parent="$(arg robot_name)_base_link">
+	<origin xyz="0 0 0.1395"/>
+  </xacro:lrf_v0>
+
+  <!-- =============== Gazebo =============== -->
+  <!-- Controllers -->
+  <xacro:robot_vehicle_systems robot_name="$(arg robot_name)"/>
+
+  <!-- Base -->
+  <xacro:base_gazebo_v0 robot_name="$(arg robot_name)"/>
+
+  <!-- Wheel -->
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_first"/>
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_second"/>
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_third"/>
+  <xacro:wheel_gazebo_v0 prefix="$(arg robot_name)_fourth"/>
+
+  <!-- lrf sensor -->
+  <xacro:lrf_gazebo_v0 prefix = "$(arg robot_name)_front" min_rad = "-3.14" max_rad = "3.14" min_range = "0.1" max_range = "10"/>
+
+
+</robot>
